@@ -1,3 +1,7 @@
+"""
+Redirects all received text messages to a user
+"""
+
 import os
 import telegram
 from dotenv import load_dotenv
@@ -19,9 +23,9 @@ def send_message(message):
 
 
 def forward(update, context):
-    context.bot.forward_message(CHAT_ID, update.message.chat.id,
-                                update.message.message_id)
-    # update.message.reply_text('Привет, я бот')
+    context.bot.forward_message(chat_id=CHAT_ID,
+                                from_chat_id=update.message.chat.id,
+                                message_id=update.message.message_id)
 
 
 if __name__ == '__main__':
